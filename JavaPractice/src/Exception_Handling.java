@@ -1,5 +1,17 @@
+import java.util.Scanner;
+import java.io.IOException;
+
+
 public class Exception_Handling {
+
+    //throws
+    static void readFile() throws IOException {
+        throw new IOException("File Not Found");
+    }
+
+
     public static void main(String[] args) {
+Scanner scan = new Scanner(System.in);
 
 //Arithmetic Exception
         try{
@@ -17,7 +29,7 @@ public class Exception_Handling {
             String name = null;
             System.out.println(name.length());
         } catch (NullPointerException e) {
-            e.printStackTrace();
+     //       e.printStackTrace();
             System.out.println("String is null.");
             System.out.println("____________________________________________________________");
         }
@@ -62,5 +74,31 @@ public class Exception_Handling {
             System.out.println("____________________________________________________________");
         }
         System.out.println("Program continues...");
-    }
+
+/* throw : throw is used to manually throw an exception.
+Imagine you're writing an Employee Management System.
+You don't want users to enter a negative salary.
+Salary = -5000
+Java won't throw an exception automatically.
+You have to throw it.*/
+
+        System.out.println("Enter Your salary");
+        double salary = scan.nextDouble();
+
+        if(salary<0){
+         throw new ArithmeticException("Salary cannot be negative");
+        }
+        System.out.println("Salary Accepted");
+
+// throws: "This method may throw an exception. Whoever calls this method must handle it."
+
+try {
+    readFile();
+}catch(IOException e){
+
+    System.out.println(e.getMessage());
+
 }
+}
+
+    }
